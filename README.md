@@ -1,30 +1,23 @@
 # PocketStop
 
-A versioned policy interface for risk-aware early-stopping decisions on molecular-dynamics screening trajectories, plus a historical-prefix replay engine for testing that a fitted model's retrospective evaluation and its deployed decision path agree exactly.
+A Risk-Aware AI Framework for Early Molecular-Dynamics Screening.
+
+**Research question:** Can early molecular dynamics identify runs that will fail a 100 ns screening endpoint without prematurely rejecting runs that would pass?
 
 ![PocketStop architecture and shadow-run interface](figures/pocketstop.png)
 
-## Scope
+## AI Innovation
 
-Historical-replay and deployment policy bundles, a checkpoint-bounded prefix reader, a sequential replay engine, and an append-only event log. **No OpenMM integration, no live pilot.** Those are separate, later work that needs a real simulation environment and explicit sign-off this package does not assume.
+Risk-aware AI learns from early ligand and pocket motion, calibrates stop/continue recommendations to a requested false-stop target, and evaluates computational savings from correct stops alongside preservation of endpoint-passing trajectories.
 
-## Dependency on `valleyfevermutation`
+## Methodology
 
-This package is developed against, and its tests depend on, the sibling `valleyfevermutation` repository's `ai2sci_p4l3` pipeline — specifically the `compare` package (feature/label join, the fixed model specification, calibration) and its already-computed `results/p4_l3_100ns_v1/` comparison outputs, which this package's replay path treats as ground truth. That dependency is **not vendored**.
+A versioned policy interface for risk-aware early-stopping decisions on molecular-dynamics screening trajectories, plus a historical-prefix replay engine for testing that a fitted model's retrospective evaluation and its deployed decision path agree exactly: historical-replay and deployment policy bundles, a checkpoint-bounded prefix reader, a sequential replay engine, and an append-only event log. **No OpenMM integration, no live pilot.** Those are separate, later work that needs a real simulation environment and explicit sign-off this package does not assume.
 
-By default, `pocketstop/__init__.py` looks for it at `../valleyfevermutation/ai2sci_p4l3`, relative to this repo's own root — i.e. the two repos are expected to be checked out as siblings:
+## Key Contributions
 
-```
-remotegit/
-├── valleyfevermutation/
-│   └── ai2sci_p4l3/
-│       ├── compare/
-│       └── results/p4_l3_100ns_v1/
-└── PocketStop/
-    └── pocketstop/
-```
-
-Set `POCKETSTOP_AI2SCI_P4L3` to override this if that layout doesn't hold on a given machine.
+- **Risk-aware AI:** stop-or-continue decisions under a specified false-stop target, audited on held-out proteins.
+- **Reproducible recommendations:** versioned policies preserve features, checkpoint, model, threshold, and decision provenance.
 
 ## Usage
 
