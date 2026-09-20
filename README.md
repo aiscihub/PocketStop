@@ -1,8 +1,8 @@
-# PocketPilot
+# PocketStop
 
 A versioned policy interface for risk-aware early-stopping decisions on molecular-dynamics screening trajectories, plus a historical-prefix replay engine for testing that a fitted model's retrospective evaluation and its deployed decision path agree exactly.
 
-Renamed from an earlier internal name, "PocketStop," after finding that name already in use by an unrelated third-party project.
+Formerly named PocketPilot.
 
 ## Scope
 
@@ -20,7 +20,7 @@ remotegit/
 │   └── ai2sci_p4l3/
 │       ├── compare/
 │       └── results/p4_l3_100ns_v1/
-└── PocketPilot/
+└── PocketStop/
     └── pocketpilot/
 ```
 
@@ -40,4 +40,4 @@ venv/bin/python -m pocketpilot.tests.test_replay_parity
 
 As of 2026-09-15, the replay-parity suite passes 8/8: batch/prefix score parity, exact decision agreement (including threshold ties), invariance to later trajectory frames, deferral (not a model-driven stop) on missing or NaN features and on a missing checkpoint frame, idempotent handling of duplicate events, preserved state across a restart, and no confusion between historical and deployment bundles.
 
-**Evidence status:** implemented and replay-tested against historical data. Not live-tested — no simulation has been run under PocketPilot's control. See `valleyfevermutation`'s `ai2sci_p4l3/artifacts/corrected_release/2026-09-15_corrected_v1/CLAIM_EVIDENCE.md` for the full evidence-status writeup this repo's tests fed into.
+**Evidence status:** implemented and replay-tested against historical data. Not live-tested — no simulation has been run under PocketStop's control. See `valleyfevermutation`'s `ai2sci_p4l3/artifacts/corrected_release/2026-09-15_corrected_v1/CLAIM_EVIDENCE.md` for the full evidence-status writeup this repo's tests fed into.
