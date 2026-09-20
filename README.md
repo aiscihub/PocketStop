@@ -49,3 +49,7 @@ venv/bin/python -m pocketstop.export_bundles --out-dir pocketstop_bundles
 # run the replay-parity acceptance tests (plain-assert script, not pytest)
 venv/bin/python -m pocketstop.tests.test_replay_parity
 ```
+
+## License
+
+[MIT](LICENSE)
