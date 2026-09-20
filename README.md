@@ -2,8 +2,6 @@
 
 A versioned policy interface for risk-aware early-stopping decisions on molecular-dynamics screening trajectories, plus a historical-prefix replay engine for testing that a fitted model's retrospective evaluation and its deployed decision path agree exactly.
 
-Formerly named PocketPilot.
-
 ![PocketStop architecture and shadow-run interface](figures/pocketstop.png)
 
 ## Scope
@@ -14,7 +12,7 @@ Historical-replay and deployment policy bundles, a checkpoint-bounded prefix rea
 
 This package is developed against, and its tests depend on, the sibling `valleyfevermutation` repository's `ai2sci_p4l3` pipeline — specifically the `compare` package (feature/label join, the fixed model specification, calibration) and its already-computed `results/p4_l3_100ns_v1/` comparison outputs, which this package's replay path treats as ground truth. That dependency is **not vendored**.
 
-By default, `pocketpilot/__init__.py` looks for it at `../valleyfevermutation/ai2sci_p4l3`, relative to this repo's own root — i.e. the two repos are expected to be checked out as siblings:
+By default, `pocketstop/__init__.py` looks for it at `../valleyfevermutation/ai2sci_p4l3`, relative to this repo's own root — i.e. the two repos are expected to be checked out as siblings:
 
 ```
 remotegit/
@@ -23,10 +21,10 @@ remotegit/
 │       ├── compare/
 │       └── results/p4_l3_100ns_v1/
 └── PocketStop/
-    └── pocketpilot/
+    └── pocketstop/
 ```
 
-Set `POCKETPILOT_AI2SCI_P4L3` to override this if that layout doesn't hold on a given machine.
+Set `POCKETSTOP_AI2SCI_P4L3` to override this if that layout doesn't hold on a given machine.
 
 ## Usage
 
@@ -34,10 +32,10 @@ From this repo's root:
 
 ```bash
 # regenerate policy bundles (historical + deployment) from the frozen L3/8ns/alpha=0.10 spec
-venv/bin/python -m pocketpilot.export_bundles --out-dir pocketpilot_bundles
+venv/bin/python -m pocketstop.export_bundles --out-dir pocketstop_bundles
 
 # run the replay-parity acceptance tests (plain-assert script, not pytest)
-venv/bin/python -m pocketpilot.tests.test_replay_parity
+venv/bin/python -m pocketstop.tests.test_replay_parity
 ```
 
 As of 2026-09-15, the replay-parity suite passes 8/8: batch/prefix score parity, exact decision agreement (including threshold ties), invariance to later trajectory frames, deferral (not a model-driven stop) on missing or NaN features and on a missing checkpoint frame, idempotent handling of duplicate events, preserved state across a restart, and no confusion between historical and deployment bundles.

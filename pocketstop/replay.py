@@ -1,6 +1,6 @@
 """Sequential replay engine (NEXT_ACTIONS.md sections 4-5).
 
-PocketPilot v0.1 has exactly one active decision checkpoint per run (section
+PocketStop v0.1 has exactly one active decision checkpoint per run (section
 2). Replay reflects that: it exposes the run's prefix only up through that
 checkpoint and issues exactly one decision. "Passing the first checkpoint
 without a stop means continuing to the planned endpoint, not applying an

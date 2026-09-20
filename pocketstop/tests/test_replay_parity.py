@@ -1,7 +1,7 @@
 """Acceptance tests from NEXT_ACTIONS.md section 4. Plain-assert script, no
 pytest dependency:
 
-    venv/bin/python -m pocketpilot.tests.test_replay_parity
+    venv/bin/python -m pocketstop.tests.test_replay_parity
 
 `compare/config.py` hardcodes REPO_ROOT for the machine that holds the raw
 trajectories; `_patch_repo_root` rewrites the derived CSV paths onto
@@ -57,7 +57,7 @@ class Fixture:
         self.cp = self.rows[self.rows["time_ns"] == EX.CHECKPOINT_NS].reset_index(drop=True)
         self.cols = C.FEATURE_BLOCKS[EX.BLOCK]
         self.manifest_hash = "test-manifest-hash-not-used-for-provenance"
-        self.tmp_dir = Path(tempfile.mkdtemp(prefix="pocketpilot_bundles_"))
+        self.tmp_dir = Path(tempfile.mkdtemp(prefix="pocketstop_bundles_"))
         self.historical = EX.export_historical_replay_bundles(
             self.tmp_dir, self.cp, self.cols, self.manifest_hash
         )

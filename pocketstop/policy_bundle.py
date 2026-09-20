@@ -25,7 +25,7 @@ import math
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-SCHEMA_VERSION = "pocketpilot-bundle-v1"
+SCHEMA_VERSION = "pocketstop-bundle-v1"
 
 _TUPLE_FIELDS = (
     "feature_order", "scaler_mean", "scaler_scale", "coefficients",

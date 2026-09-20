@@ -8,7 +8,7 @@ calibration rule rather than re-deriving any of them -- this exporter must
 match the frozen analysis, not produce a second implementation of it.
 
 Usage (from this repo's root, with valleyfevermutation checked out as a sibling):
-    venv/bin/python -m pocketpilot.export_bundles --out-dir pocketpilot_bundles
+    venv/bin/python -m pocketstop.export_bundles --out-dir pocketstop_bundles
 """
 from __future__ import annotations
 
@@ -110,7 +110,7 @@ def export_historical_replay_bundles(out_dir: Path, cp, cols: list[str],
 
         bundle = PolicyBundle(
             artifact_type="historical_replay",
-            policy_id=f"pocketpilot-v0.1-{BLOCK}-{int(CHECKPOINT_NS)}ns-alpha{ALPHA}-held_out_{held}",
+            policy_id=f"pocketstop-v0.1-{BLOCK}-{int(CHECKPOINT_NS)}ns-alpha{ALPHA}-held_out_{held}",
             scaler_mean=tuple(float(x) for x in scaler.mean_),
             scaler_scale=tuple(float(x) for x in scaler.scale_),
             coefficients=tuple(float(x) for x in clf.coef_[0]),
@@ -155,7 +155,7 @@ def export_deployment_bundle(out_dir: Path, cp, cols: list[str],
 
     bundle = PolicyBundle(
         artifact_type="deployment",
-        policy_id=f"pocketpilot-v0.1-{BLOCK}-{int(CHECKPOINT_NS)}ns-alpha{ALPHA}-deployment",
+        policy_id=f"pocketstop-v0.1-{BLOCK}-{int(CHECKPOINT_NS)}ns-alpha{ALPHA}-deployment",
         scaler_mean=tuple(float(x) for x in scaler.mean_),
         scaler_scale=tuple(float(x) for x in scaler.scale_),
         coefficients=tuple(float(x) for x in clf.coef_[0]),

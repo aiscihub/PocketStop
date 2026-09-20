@@ -4,12 +4,12 @@
   "calibration_note": "threshold selected on pooled protein-cross-fitted calibration scores within (all data \\ held-out protein); see compare/evaluate.py apply_policy",
   "checkpoint_ns": 8.0,
   "coefficients": [
-    0.7363753230259201,
-    0.5453186399678887,
-    0.35675934349851124
+    0.543288418096871,
+    0.6056168000359108,
+    0.5453798214047028
   ],
   "comparison_operator": ">=",
-  "content_hash": "b921306e1de318d19b6673568b4e7980e37e08d9752db87e98a932849a849900",
+  "content_hash": "6bc2a183111d88ccab2be904b4262837b5fd3b02af27e7217904dd33645a28e0",
   "endpoint_version": "label_unstable = f_contact_20ns<=0.35 OR rmsd_late_20ns>=1.0 (100ns cohort)",
   "feature_order": [
     "early_ligand_rmsd_from_t0",
@@ -21,81 +21,80 @@
     "early_ligand_rmsd_max": "angstrom_or_angstrom_derived",
     "early_ligand_rmsd_slope": "angstrom_or_angstrom_derived"
   },
-  "held_out_protein": "CIMG_06197",
+  "held_out_protein": "CIMG_09093",
   "intended_domain": "milbemycin / ABC-transporter 100ns cohort, same launches as training",
-  "intercept": 0.3061382195342995,
+  "intercept": 0.3065857624934283,
   "known_limitations": [
     "L3 self-aligns the ligand: it measures internal conformational deviation, not translation or reorientation relative to the receptor (README.md / HANDOFF.md section 3).",
     "Scores are model scores, not calibrated percent risks; calibration has not been independently evaluated.",
     "Endpoint label provenance: historical scratch drivers for the 100ns labels are not hash-verified (compare/config.py T_NS comment).",
-    "Fitted excluding only protein CIMG_06197; scores only that protein's own runs (permitted_run_uids). Not a deployment policy."
+    "Fitted excluding only protein CIMG_09093; scores only that protein's own runs (permitted_run_uids). Not a deployment policy."
   ],
   "measurement_version": "ai2sci_100ns_full_cohort_features_ext30ns.csv",
   "model_id": "logreg-C3.0-L3",
   "numerical_parity_examples": [
     {
       "checkpoint_ns": 8.0,
-      "expected_score": 0.3139564452201388,
+      "expected_score": 0.671749206372408,
       "feature_values": {
-        "early_ligand_rmsd_from_t0": 0.4896958533180453,
-        "early_ligand_rmsd_max": 0.9527757542616716,
-        "early_ligand_rmsd_slope": 0.0285497249700336
+        "early_ligand_rmsd_from_t0": 1.0517384220765529,
+        "early_ligand_rmsd_max": 1.153380548214333,
+        "early_ligand_rmsd_slope": 0.0616239680028816
       },
-      "run_uid": "CIMG_06197__Milbemycin__pocket1__replica_1"
+      "run_uid": "CIMG_09093__Milbemycin__pocket1__replica_1"
     },
     {
       "checkpoint_ns": 8.0,
-      "expected_score": 0.4442051040303696,
+      "expected_score": 0.5273005055052362,
       "feature_values": {
-        "early_ligand_rmsd_from_t0": 0.611889852816477,
-        "early_ligand_rmsd_max": 1.307000834712304,
-        "early_ligand_rmsd_slope": 0.0332647553094183
+        "early_ligand_rmsd_from_t0": 0.6900839617943421,
+        "early_ligand_rmsd_max": 0.8382515610871929,
+        "early_ligand_rmsd_slope": 0.0814662606002822
       },
-      "run_uid": "CIMG_06197__Milbemycin__pocket14__replica_1"
+      "run_uid": "CIMG_09093__Milbemycin__pocket12__replica_1"
     },
     {
       "checkpoint_ns": 8.0,
-      "expected_score": 0.580827975111535,
+      "expected_score": 0.7914337351749053,
       "feature_values": {
-        "early_ligand_rmsd_from_t0": 0.8182418467138832,
-        "early_ligand_rmsd_max": 1.5086774863746726,
-        "early_ligand_rmsd_slope": 0.0365202000656582
+        "early_ligand_rmsd_from_t0": 1.1675592421667145,
+        "early_ligand_rmsd_max": 1.34475523151036,
+        "early_ligand_rmsd_slope": 0.079574274894517
       },
-      "run_uid": "CIMG_06197__Milbemycin__pocket15__replica_1"
+      "run_uid": "CIMG_09093__Milbemycin__pocket13__replica_1"
     }
   ],
   "permitted_run_uids": [
-    "CIMG_06197__Milbemycin__pocket14__replica_1",
-    "CIMG_06197__Milbemycin__pocket15__replica_1",
-    "CIMG_06197__Milbemycin__pocket1__replica_1",
-    "CIMG_06197__Milbemycin__pocket2__replica_1",
-    "CIMG_06197__Milbemycin__pocket3__replica_1",
-    "CIMG_06197__Milbemycin__pocket4__replica_1",
-    "CIMG_06197__Milbemycin__pocket7__replica_1",
-    "CIMG_06197__Milbemycin__pocket9__replica_1"
+    "CIMG_09093__Milbemycin__pocket12__replica_1",
+    "CIMG_09093__Milbemycin__pocket13__replica_1",
+    "CIMG_09093__Milbemycin__pocket1__replica_1",
+    "CIMG_09093__Milbemycin__pocket2__replica_1",
+    "CIMG_09093__Milbemycin__pocket3__replica_1",
+    "CIMG_09093__Milbemycin__pocket4__replica_1",
+    "CIMG_09093__Milbemycin__pocket8__replica_1"
   ],
   "planned_duration_ns": 100.0,
-  "policy_id": "pocketpilot-v0.1-L3-8ns-alpha0.1-held_out_CIMG_06197",
+  "policy_id": "pocketstop-v0.1-L3-8ns-alpha0.1-held_out_CIMG_09093",
   "positive_class_meaning": "label_unstable=1 (endpoint not reached by the full-budget outcome); high score recommends stop",
   "reference_convention": "self-aligned ligand heavy-atom RMSD (L3 block); see compare/config.py",
   "sampling_convention": "checkpoint grid 2,4,...,30 ns per manifest_106runs.csv / config.CHECKPOINTS_NS",
   "scaler_mean": [
-    0.9389323745296071,
-    0.042928145385980276,
-    1.1673674202718334
+    0.9157640184431405,
+    0.04195413905827385,
+    1.1561996965444157
   ],
   "scaler_scale": [
-    0.4447927370045084,
-    0.04875799268455891,
-    0.41770406203956895
+    0.4434623611160993,
+    0.04830085416921441,
+    0.41661967885398987
   ],
-  "schema_version": "pocketpilot-bundle-v1",
+  "schema_version": "pocketstop-bundle-v1",
   "tested_environment": {
     "numpy": "2.2.6",
     "python": "3.10.16",
     "sklearn": "1.7.0"
   },
-  "threshold": 0.584929926201377,
+  "threshold": 0.5903314185526921,
   "tie_rule": "score == threshold recommends STOP (compare/thresholding.py confusion_at)",
   "training_manifest_hash": "b6d842b008267326ee66cd0e55c965a68f34714736784d01d4df8c5766eb3d0d"
 }
