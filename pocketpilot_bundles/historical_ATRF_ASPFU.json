@@ -1,0 +1,100 @@
+{
+  "allowed_mode": "shadow",
+  "artifact_type": "historical_replay",
+  "calibration_note": "threshold selected on pooled protein-cross-fitted calibration scores within (all data \\ held-out protein); see compare/evaluate.py apply_policy",
+  "checkpoint_ns": 8.0,
+  "coefficients": [
+    0.3480288083503563,
+    0.7441598060183423,
+    0.5332175564650554
+  ],
+  "comparison_operator": ">=",
+  "content_hash": "c6f41b468f2e5d8cf42d9f3150a44dee4f0f6268b6efed742054c73f33433477",
+  "endpoint_version": "label_unstable = f_contact_20ns<=0.35 OR rmsd_late_20ns>=1.0 (100ns cohort)",
+  "feature_order": [
+    "early_ligand_rmsd_from_t0",
+    "early_ligand_rmsd_slope",
+    "early_ligand_rmsd_max"
+  ],
+  "feature_units": {
+    "early_ligand_rmsd_from_t0": "angstrom_or_angstrom_derived",
+    "early_ligand_rmsd_max": "angstrom_or_angstrom_derived",
+    "early_ligand_rmsd_slope": "angstrom_or_angstrom_derived"
+  },
+  "held_out_protein": "ATRF_ASPFU",
+  "intended_domain": "milbemycin / ABC-transporter 100ns cohort, same launches as training",
+  "intercept": 0.3279398744132621,
+  "known_limitations": [
+    "L3 self-aligns the ligand: it measures internal conformational deviation, not translation or reorientation relative to the receptor (README.md / HANDOFF.md section 3).",
+    "Scores are model scores, not calibrated percent risks; calibration has not been independently evaluated.",
+    "Endpoint label provenance: historical scratch drivers for the 100ns labels are not hash-verified (compare/config.py T_NS comment).",
+    "Fitted excluding only protein ATRF_ASPFU; scores only that protein's own runs (permitted_run_uids). Not a deployment policy."
+  ],
+  "measurement_version": "ai2sci_100ns_full_cohort_features_ext30ns.csv",
+  "model_id": "logreg-C3.0-L3",
+  "numerical_parity_examples": [
+    {
+      "checkpoint_ns": 8.0,
+      "expected_score": 0.24049747871026075,
+      "feature_values": {
+        "early_ligand_rmsd_from_t0": 0.5359061855528962,
+        "early_ligand_rmsd_max": 0.5690920466593281,
+        "early_ligand_rmsd_slope": 0.0184666506827465
+      },
+      "run_uid": "ATRF_ASPFU__Milbemycin__pocket1__replica_1"
+    },
+    {
+      "checkpoint_ns": 8.0,
+      "expected_score": 0.4360568267169554,
+      "feature_values": {
+        "early_ligand_rmsd_from_t0": 0.8258650239576052,
+        "early_ligand_rmsd_max": 1.056000840011887,
+        "early_ligand_rmsd_slope": 0.0207075383409522
+      },
+      "run_uid": "ATRF_ASPFU__Milbemycin__pocket11__replica_1"
+    },
+    {
+      "checkpoint_ns": 8.0,
+      "expected_score": 0.1910778573616412,
+      "feature_values": {
+        "early_ligand_rmsd_from_t0": 0.4153977454730021,
+        "early_ligand_rmsd_max": 0.5818999851137704,
+        "early_ligand_rmsd_slope": 0.0043806470118426
+      },
+      "run_uid": "ATRF_ASPFU__Milbemycin__pocket13__replica_1"
+    }
+  ],
+  "permitted_run_uids": [
+    "ATRF_ASPFU__Milbemycin__pocket11__replica_1",
+    "ATRF_ASPFU__Milbemycin__pocket13__replica_1",
+    "ATRF_ASPFU__Milbemycin__pocket1__replica_1",
+    "ATRF_ASPFU__Milbemycin__pocket2__replica_1",
+    "ATRF_ASPFU__Milbemycin__pocket3__replica_1",
+    "ATRF_ASPFU__Milbemycin__pocket4__replica_1",
+    "ATRF_ASPFU__Milbemycin__pocket7__replica_1"
+  ],
+  "planned_duration_ns": 100.0,
+  "policy_id": "pocketpilot-v0.1-L3-8ns-alpha0.1-held_out_ATRF_ASPFU",
+  "positive_class_meaning": "label_unstable=1 (endpoint not reached by the full-budget outcome); high score recommends stop",
+  "reference_convention": "self-aligned ligand heavy-atom RMSD (L3 block); see compare/config.py",
+  "sampling_convention": "checkpoint grid 2,4,...,30 ns per manifest_106runs.csv / config.CHECKPOINTS_NS",
+  "scaler_mean": [
+    0.9379489242901524,
+    0.042784501449695186,
+    1.17944742267006
+  ],
+  "scaler_scale": [
+    0.4437116879276901,
+    0.048721255305435966,
+    0.41138058025031143
+  ],
+  "schema_version": "pocketpilot-bundle-v1",
+  "tested_environment": {
+    "numpy": "2.2.6",
+    "python": "3.10.16",
+    "sklearn": "1.7.0"
+  },
+  "threshold": 0.6029275037735699,
+  "tie_rule": "score == threshold recommends STOP (compare/thresholding.py confusion_at)",
+  "training_manifest_hash": "b6d842b008267326ee66cd0e55c965a68f34714736784d01d4df8c5766eb3d0d"
+}
