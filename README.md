@@ -4,6 +4,8 @@ A versioned policy interface for risk-aware early-stopping decisions on molecula
 
 Formerly named PocketPilot.
 
+![PocketStop architecture and shadow-run interface](figures/pocketstop.png)
+
 ## Scope
 
 Historical-replay and deployment policy bundles, a checkpoint-bounded prefix reader, a sequential replay engine, and an append-only event log. **No OpenMM integration, no live pilot.** Those are separate, later work that needs a real simulation environment and explicit sign-off this package does not assume.
